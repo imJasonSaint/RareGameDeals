@@ -1,0 +1,68 @@
+*,
+*::before,
+*::after {
+    margin: 0;
+}
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    background-color: #2c2441;
+}
+
+.banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 2rem;
+}
+
+.banner .container {
+    width: 55%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.banner img {
+    width: 7rem;
+}
+
+.banner nav {
+    display: flex;
+    gap: 5rem;
+}
+
+.banner nav a {
+    text-decoration: none;
+    color: white;
+}
+
+.features {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem;
+}
+
+.features form {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.features .container {
+    width: 56%;
+}
+
+.features .search {
+    width: 40%;
+    height: 2rem;
+    padding: 0 .5rem;
+}
+
+.features .options-btn {
+    padding: .3rem 1rem;
+    background-color: rgba(44, 36, 65, 0);
+    color: white;
+    border: 1px solid white;
+    font-family: 'Work Sans', sans-serif;
+}
