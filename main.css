@@ -56,13 +56,92 @@ body {
 .features .search {
     width: 40%;
     height: 2rem;
-    padding: 0 .5rem;
+    padding: .4rem 1rem;
+    font-size: 1.2rem;
 }
 
 .features .options-btn {
-    padding: .3rem 1rem;
+    padding: .9rem 2rem;
     background-color: rgba(44, 36, 65, 0);
     color: white;
     border: 1px solid white;
     font-family: 'Work Sans', sans-serif;
+    font-size: 1.2rem;
+    margin-left: 1rem;
+}
+
+.features .options-btn .arrow {
+    border: solid white;
+    border-width: 0 3px 3px 0;
+    display: inline-block;
+    padding: 4px;
+    transform: rotate(45deg);
+    margin-bottom: .15rem;
+    margin-left: 1rem;
+}
+
+.deals {
+    /* Change to Grid in the future */
+    display: flex;
+    justify-content: center;
+}
+
+.deals .container {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    width: 55%;
+}
+
+.deals .container a {
+    display: flex;
+    align-items: center;
+    color: white;
+    text-decoration: none;
+    background-image: linear-gradient(to right, #5f488b, #2c2441);
+    border: 2px solid #FFB800;
+}
+
+.deals .container h2,
+.deals .container p {
+    font-weight: 400;
+}
+
+
+/* Game Image */
+.deals .container a img {
+    width: 18rem;
+    border-right: 2px solid #FFB800;
+}
+
+.deals .game-stats {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 0 2rem;
+}
+
+.deals .game-stats .game-info {
+    display: flex;
+    flex-direction: column;
+    gap: .3rem;
+}
+
+.deals .game-stats .game-info p {
+    color: #AC96D8;
+}
+
+.deals .game-stats .game-info .rating {
+    color: #FFB800;
+}
+
+.deals .game-price .original-price {
+    color: #AC96D8;
+    text-decoration: line-through;
+    font-size: 1rem;
+}
+
+.deals .game-price .deal-price {
+    font-size: 1.8rem;
 }
