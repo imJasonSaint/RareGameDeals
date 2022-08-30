@@ -98,7 +98,7 @@ body {
     align-items: center;
     color: white;
     text-decoration: none;
-    /* background-image: linear-gradient(to right, #5f488b, #2c2441); */
+    background-image: linear-gradient(to right, #5f488b, #2c2441);
     border: 2px solid #FFB800;
 }
 
