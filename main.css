@@ -2,6 +2,7 @@
 *::before,
 *::after {
     margin: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -55,7 +56,7 @@ body {
 
 .features .search {
     width: 40%;
-    height: 2rem;
+    height: 3rem;
     padding: .4rem 1rem;
     font-size: 1.2rem;
 }
@@ -81,19 +82,19 @@ body {
 }
 
 .deals {
-    /* Change to Grid in the future */
     display: flex;
     justify-content: center;
 }
 
 .deals .container {
+    /* Change to Grid in the future */
     display: flex;
     flex-direction: column;
     gap: 1rem;
     width: 55%;
 }
 
-.deals .container a {
+.deals .container .deal {
     display: flex;
     align-items: center;
     color: white;
@@ -130,10 +131,12 @@ body {
     gap: .3rem;
 }
 
+/* Steam Game Rating */
 .deals .game-stats .game-info p {
     color: #AC96D8;
 }
 
+/* Deal Rating */
 .deals .game-stats .game-info .rating {
     color: #FFB800;
 }
@@ -146,4 +149,85 @@ body {
 
 .deals .game-price .deal-price {
     font-size: 1.8rem;
+}
+
+@media (max-width: 1300px) {
+
+    .deals .container .deal {
+        flex-direction: column;
+    }
+
+    .deals .container {
+        width: 292px;
+    }
+
+    .deals .container a img {
+        /* width: 18rem; */
+        border-right-width: 0px;
+        border-bottom: 2px solid #FFB800;
+    }
+
+    .deals .game-stats {
+        width: 100%;
+        flex-direction: column;
+        align-items: unset;
+        justify-content: unset;
+        margin: unset;
+        padding: 1rem;
+        /* padding-left: 3rem; */
+    }
+
+    .deals .game-stats .game-info {
+        margin-bottom: 1rem;
+    }
+
+    .deals .game-stats .game-info .game-title {
+        font-size: 1rem;
+    }
+
+    .deals .game-stats .game-info p {
+        font-size: .8rem;
+    }
+
+    .game-price p {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .features .container {
+        width: 292px;
+    }
+
+    .features .search {
+        width: 100%;
+        padding: 1.5rem 1rem;
+    }
+
+    .features form {
+        flex-direction: column;
+    }
+
+    .features .options {
+        display: flex;
+        margin-top: 1rem;
+    }
+
+    .features .options-btn {
+        width: 5rem;
+        font-size: .8rem;
+        padding: .5rem 0;
+    }
+
+    .features .options-btn .arrow {
+        display: none;
+    }
+
+    .banner nav {
+        display: none;
+    }
+
+    .banner .container {
+        align-items: center;
+        justify-content: center;
+    }
 }
