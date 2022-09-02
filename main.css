@@ -141,6 +141,10 @@ body {
     color: #FFB800;
 }
 
+.deals .game-stats .game-info .separator {
+    margin: 0 .5rem;
+}
+
 .deals .game-price .original-price {
     color: #AC96D8;
     text-decoration: line-through;
@@ -149,6 +153,7 @@ body {
 
 .deals .game-price .deal-price {
     font-size: 1.8rem;
+    margin-left: .5rem;
 }
 
 @media (max-width: 1300px) {
@@ -192,6 +197,10 @@ body {
     .game-price p {
         display: flex;
         flex-direction: column;
+    }
+
+    .deals .game-price .deal-price {
+        margin-left: 0;
     }
 
     .features .container {
