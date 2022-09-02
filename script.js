@@ -44,6 +44,7 @@ function generateDeals(deals) {
         dealLink.classList.add('deal')
         const dealID = deal['dealID']
         dealLink.setAttribute('href', `https://www.cheapshark.com/redirect?dealID=${dealID}`)
+        dealLink.setAttribute('target', '_blank')
 
         // Game Steam Header Image
         const headerImg = document.createElement('img')
