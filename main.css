@@ -100,9 +100,20 @@ body {
     color: white;
     text-decoration: none;
     background-image: linear-gradient(to right, #5f488b, #2c2441);
-    border: 2px solid #FFB800;
 }
 
+/* Rare Game Colors */
+.deals .container .rare {
+    border: 2px solid #00B2FF;
+}
+
+.deals .container .rare img {
+    border-right: 2px solid #00B2FF;
+}
+
+.deals .rare .rating {
+    color: #00B2FF;
+}
 
 
 .deals .container h2,
@@ -112,9 +123,8 @@ body {
 
 
 /* Game Image */
-.deals .container a img {
+.deals .container .deal img {
     width: 18rem;
-    border-right: 2px solid #FFB800;
 }
 
 .deals .game-stats {
@@ -137,9 +147,7 @@ body {
 }
 
 /* Deal Rating */
-.deals .game-stats .game-info .rating {
-    color: #FFB800;
-}
+
 
 .deals .game-stats .game-info .separator {
     margin: 0 .5rem;
