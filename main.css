@@ -102,7 +102,7 @@ body {
     background-image: linear-gradient(to right, #5f488b, #2c2441);
 }
 
-/* Rare Game Colors */
+/* Rare Game Colors (00B2FF) */
 .deals .container .rare {
     border: 2px solid #00B2FF;
 }
@@ -115,7 +115,7 @@ body {
     color: #00B2FF;
 }
 
-/* Legenday Game Colors (FFB800) */
+/* Legendary Game Colors (FFB800) */
 .deals .container .legendary {
     border: 2px solid #FFB800;
 }
@@ -126,6 +126,19 @@ body {
 
 .deals .legendary .rating {
     color: #FFB800;
+}
+
+/* Common Game Colors (ADADAD) */
+.deals .container .common {
+    border: 2px solid #ADADAD;
+}
+
+.deals .container .common img {
+    border-right: 2px solid #ADADAD;
+}
+
+.deals .common .rating {
+    color: #ADADAD;
 }
 
 .deals .container h2,
@@ -188,6 +201,16 @@ body {
         /* width: 18rem; */
         border-right-width: 0px;
         border-bottom: 2px solid #FFB800;
+    }
+
+    .deals .container .rare img {
+        border-right-width: 0px;
+        border-bottom: 2px solid #00B2FF;
+    }
+
+    .deals .container .common img {
+        border-right-width: 0px;
+        border-bottom: 2px solid #ADADAD;
     }
 
     .deals .game-stats {

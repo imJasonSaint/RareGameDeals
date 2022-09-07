@@ -1,9 +1,5 @@
-
-
-const URL = 'https://www.cheapshark.com/api/1.0/deals?storeID=1'
-
 // Fetch API Info
-async function fetchDeals() {
+async function fetchDeals(URL) {
     try {
         const response = await fetch(URL)
         const deals = await response.json()
@@ -39,6 +35,19 @@ function generateDeals(deals) {
 
     deals.forEach(deal => {
 
+        // Determine Deal Rating (Legendary, Rare, or Common)
+        let ratingVar = null
+
+        if (deal['metacriticScore'] >= 75 && deal['savings'] >= 70) {
+            ratingVar = 'Legendary'
+        } else if (deal['metacriticScore'] >= 50 && deal['savings'] >= 90) {
+            ratingVar = 'Rare'
+        } else {
+            ratingVar = 'Common'
+        }
+
+        console.log(ratingVar)
+
         // Create Wrapper Deal Link
         const dealLink = document.createElement('a')
         dealLink.classList.add('deal')
@@ -70,7 +79,18 @@ function generateDeals(deals) {
         const ratingReview = document.createElement('p')
 
         const rating = document.createElement('span')
-        rating.textContent = 'Legendary Deal'
+
+        if (ratingVar === 'Legendary') {
+            rating.textContent = 'Legendary Deal'
+            dealLink.classList.add('legendary')
+        } else if (ratingVar === 'Rare') {
+            rating.textContent = 'Rare Deal'
+            dealLink.classList.add('rare')
+        } else {
+            rating.textContent = 'Common Deal'
+            dealLink.classList.add('common')
+        }
+
         rating.classList.add('rating')
 
         const separator = document.createElement('span')
@@ -114,10 +134,12 @@ function generateDeals(deals) {
 
 }
 
-async function renderDeals() {
-    const deals = await fetchDeals()
+const URL = 'https://www.cheapshark.com/api/1.0/deals?storeID=1'
+
+async function renderDeals(URL) {
+    const deals = await fetchDeals(URL)
 
     generateDeals(deals)
 }
 
-renderDeals()
+renderDeals(URL)
