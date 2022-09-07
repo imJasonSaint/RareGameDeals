@@ -115,6 +115,18 @@ body {
     color: #00B2FF;
 }
 
+/* Legenday Game Colors (FFB800) */
+.deals .container .legendary {
+    border: 2px solid #FFB800;
+}
+
+.deals .container .legendary img {
+    border-right: 2px solid #FFB800;
+}
+
+.deals .legendary .rating {
+    color: #FFB800;
+}
 
 .deals .container h2,
 .deals .container p {
@@ -172,7 +184,7 @@ body {
         width: 292px;
     }
 
-    .deals .container a img {
+    .deals .container .legendary img {
         /* width: 18rem; */
         border-right-width: 0px;
         border-bottom: 2px solid #FFB800;
