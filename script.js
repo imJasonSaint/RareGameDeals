@@ -79,15 +79,12 @@ function generateDeals(deals) {
         const ratingReview = document.createElement('p')
 
         const rating = document.createElement('span')
-
+        rating.textContent = ratingVar
         if (ratingVar === 'Legendary') {
-            rating.textContent = 'Legendary Deal'
             dealLink.classList.add('legendary')
         } else if (ratingVar === 'Rare') {
-            rating.textContent = 'Rare Deal'
             dealLink.classList.add('rare')
         } else {
-            rating.textContent = 'Common Deal'
             dealLink.classList.add('common')
         }
 
