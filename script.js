@@ -3,6 +3,7 @@ async function fetchDeals(URL) {
     try {
         const response = await fetch(URL)
         const deals = await response.json()
+        console.log('Total Pages: ', response.headers.get('X-Total-Page-Count'))
         return deals
     } catch (error) {
         console.log('An Error has occured')
@@ -46,8 +47,6 @@ function generateDeals(deals) {
             ratingVar = 'Common'
         }
 
-        console.log(ratingVar)
-
         // Create Wrapper Deal Link
         const dealLink = document.createElement('a')
         dealLink.classList.add('deal')
@@ -57,8 +56,13 @@ function generateDeals(deals) {
 
         // Game Steam Header Image
         const headerImg = document.createElement('img')
-        const steamID = deal['steamAppID']
-        headerImg.setAttribute('src', `https://cdn.cloudflare.steamstatic.com/steam/apps/${steamID}/header.jpg`)
+
+        if (deal['steamAppID'] === null) {
+            headerImg.setAttribute('src', './Images/placeholder/missing.jpg')
+        } else {
+            const steamID = deal['steamAppID']
+            headerImg.setAttribute('src', `https://cdn.cloudflare.steamstatic.com/steam/apps/${steamID}/header.jpg`)
+        }
         dealLink.append(headerImg)
 
         // Div for Game Title, Rating, Review, & Price
@@ -132,6 +136,7 @@ function generateDeals(deals) {
 }
 
 const URL = 'https://www.cheapshark.com/api/1.0/deals?storeID=1'
+var scrolls = 1
 
 async function renderDeals(URL) {
     const deals = await fetchDeals(URL)
@@ -139,4 +144,10 @@ async function renderDeals(URL) {
     generateDeals(deals)
 }
 
+
+function addDeals() {
+    renderDeals(URL + '&pageNumber=' + scrolls)
+}
+
 renderDeals(URL)
+addDeals()
