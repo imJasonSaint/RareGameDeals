@@ -150,4 +150,4 @@ function addDeals() {
 }
 
 renderDeals(URL)
-addDeals()
+addDeals() //appends the new list to the top of the container, we need it at the bottom
