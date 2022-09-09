@@ -147,7 +147,18 @@ async function renderDeals(URL) {
 
 function addDeals() {
     renderDeals(URL + '&pageNumber=' + scrolls)
+    scrolls += 1
 }
 
 renderDeals(URL)
+
+// Infinte Scroll Listener
+window.addEventListener('scroll', () => {
+    // console.log(window.scrollY)
+    if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight && scrolls <= 50) {
+        addDeals()
+    }
+})
+
+
 //addDeals() //appends the new list to the top of the container, we need it at the bottom
