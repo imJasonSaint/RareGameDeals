@@ -92,6 +92,7 @@ body {
     flex-direction: column;
     gap: 1rem;
     width: 55%;
+    margin-bottom: 5rem;
 }
 
 .deals .container .deal {
