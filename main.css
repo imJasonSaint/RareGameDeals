@@ -10,6 +10,10 @@ body {
     background-color: #2c2441;
 }
 
+.hidden {
+    display: none !important;
+}
+
 .banner {
     display: flex;
     align-items: center;

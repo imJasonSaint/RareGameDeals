@@ -137,6 +137,10 @@ function generateDeals(deals) {
 
 const URL = 'https://www.cheapshark.com/api/1.0/deals?storeID=1'
 var scrolls = 1
+const searchInput = document.querySelector('[data-search]')
+
+// Filter/Sort Param variables
+let userInput = null
 
 async function renderDeals(URL) {
     const deals = await fetchDeals(URL)
@@ -146,19 +150,40 @@ async function renderDeals(URL) {
 
 
 function addDeals() {
-    renderDeals(URL + '&pageNumber=' + scrolls)
+
+    let params = ''
+
+    // Search Bar
+    if (userInput !== null) {
+        // renderDeals(URL + '&title=' + userInput + '&pageNumber=' + scrolls)
+        params = params + '&title=' + userInput
+    }
+
+    renderDeals(URL + params + '&pageNumber=' + scrolls)
     scrolls += 1
 }
 
-renderDeals(URL)
-
 // Infinte Scroll Listener
 window.addEventListener('scroll', () => {
-    // console.log(window.scrollY)
     if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight && scrolls <= 50) {
         addDeals()
     }
 })
 
+//Search Bar Event Listener
+searchInput.addEventListener('input', e => {
+    const deals = document.querySelectorAll('.deal')
 
-//addDeals() //appends the new list to the top of the container, we need it at the bottom
+    console.log(deals)
+
+    deals.forEach(deal => {
+        deal.classList.add('hidden')
+    })
+
+    userInput = e.target.value.toLowerCase()
+    console.log(userInput)
+    renderDeals(URL + '&title=' + userInput)
+})
+
+renderDeals(URL)
+
