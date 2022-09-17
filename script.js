@@ -39,7 +39,7 @@ function generateDeals(deals) {
         // Determine Deal Rating (Legendary, Rare, or Common)
         let ratingVar = null
 
-        if (deal['metacriticScore'] >= 75 && deal['savings'] >= 70) {
+        if ((deal['metacriticScore'] >= 75 && (deal['savings'] >= 70 || deal['salePrice'] < 10))) {
             ratingVar = 'Legendary'
         } else if (deal['metacriticScore'] >= 50 && deal['savings'] >= 90) {
             ratingVar = 'Rare'

@@ -58,6 +58,22 @@ body {
     width: 56%;
 }
 
+.features .dropdowns {
+    display: flex;
+}
+
+.options {
+    position: relative;
+}
+
+.options-menu {
+    position: absolute;
+    left: 1rem;
+    top: calc(100% + .25rem);
+    background-color: white;
+
+}
+
 .features .search {
     width: 40%;
     height: 3rem;
