@@ -48,7 +48,7 @@ body {
     margin: 1rem;
 }
 
-.features form {
+.features .container {
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -69,10 +69,24 @@ body {
 .options-menu {
     position: absolute;
     left: 1rem;
-    top: calc(100% + .25rem);
+    /* top: calc(100% + .25rem); */
+    top: 100%;
     background-color: white;
-
+    padding: .75rem;
+    width: 90%;
+    opacity: 0;
+    pointer-events: none;
 }
+
+.options>.options-btn:focus+.options-menu {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* https: //www.youtube.com/watch?v=S-VeYcOCFZw&t=97s&ab_channel=WebDevSimplified */
+/* .options-menu.active {
+    opacity: 1;
+} */
 
 .features .search {
     width: 40%;
@@ -89,6 +103,7 @@ body {
     font-family: 'Work Sans', sans-serif;
     font-size: 1.2rem;
     margin-left: 1rem;
+    cursor: pointer;
 }
 
 .features .options-btn .arrow {
