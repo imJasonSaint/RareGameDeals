@@ -41,7 +41,7 @@ function generateDeals(deals) {
 
         if ((deal['metacriticScore'] >= 75 && (deal['savings'] >= 70 || deal['salePrice'] < 10))) {
             ratingVar = 'Legendary'
-        } else if (deal['metacriticScore'] >= 50 && deal['savings'] >= 90) {
+        } else if (deal['metacriticScore'] >= 50 && (deal['savings'] >= 90 || deal['salePrice'] < 5)) {
             ratingVar = 'Rare'
         } else {
             ratingVar = 'Common'
