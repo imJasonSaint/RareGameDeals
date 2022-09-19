@@ -185,5 +185,30 @@ searchInput.addEventListener('input', e => {
     renderDeals(URL + '&title=' + userInput)
 })
 
+// FIX THIS TO WORK
+// Drop Down Options Event Listener
+// const filterButtons = document.querySelectorAll('.filter-option')
+
+// filterButtons.forEach(filterButton => {
+//     // console.log(filterButton.innerHTML)
+
+//     filterButton.addEventListener('click', () => {
+//         // console.log(filterButton.innerHTML)
+//         console.log('click')
+//     })
+// })
+
+// Drop Down Options 
+document.addEventListener('click', e => {
+
+    // console.log(e.target)
+
+    if (e.target.matches('.filter-option')) {
+        console.log('hi')
+    }
+
+})
+
+
 renderDeals(URL)
 

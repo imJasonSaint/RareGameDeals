@@ -83,7 +83,6 @@ body {
     pointer-events: auto;
 }
 
-/* https: //www.youtube.com/watch?v=S-VeYcOCFZw&t=97s&ab_channel=WebDevSimplified */
 /* .options-menu.active {
     opacity: 1;
 } */
@@ -114,6 +113,22 @@ body {
     transform: rotate(45deg);
     margin-bottom: .15rem;
     margin-left: 1rem;
+}
+
+.option {
+    display: flex;
+    flex-direction: column;
+    padding: .75rem;
+    width: 100%;
+    background-color: white;
+    border: none;
+    font-size: 1rem;
+    font-family: inherit;
+    cursor: pointer;
+}
+
+.option:hover {
+    background-color: #d6d6d6;
 }
 
 .deals {
