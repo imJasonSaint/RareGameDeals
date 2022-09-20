@@ -78,13 +78,14 @@ body {
     pointer-events: none;
 }
 
-.options>.options-btn:focus+.options-menu {
+.options.active>.options-btn+.options-menu {
     opacity: 1;
     pointer-events: auto;
 }
 
 /* .options-menu.active {
     opacity: 1;
+    pointer-events: auto;
 } */
 
 .features .search {

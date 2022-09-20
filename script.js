@@ -130,9 +130,20 @@ function generateDeals(deals) {
         dealLink.append(gameStats)
 
         // Append Deal to Deal Container
-        dealContainer.append(dealLink)
+        if (filterOption === null || filterOption === 'Default') {
+            dealContainer.append(dealLink)
+        } else {
+            if (filterOption === ratingVar) {
+                dealContainer.append(dealLink)
+            }
+        }
     })
 
+}
+
+function removeDeals() {
+    const dealContainer = document.getElementById('dealContainer')
+    dealContainer.replaceChildren()
 }
 
 const URL = 'https://www.cheapshark.com/api/1.0/deals?storeID=1'
@@ -141,6 +152,16 @@ const searchInput = document.querySelector('[data-search]')
 
 // Filter/Sort Param variables
 let userInput = null
+let filterOption = null
+
+let filters = {
+    'Default': '',
+    'Legendary': '',
+    'Rare': '',
+    'Common': '',
+    'Under $5': '&upperPrice=5',
+    'Under $10': '&upperPrice=10'
+}
 
 async function renderDeals(URL) {
     const deals = await fetchDeals(URL)
@@ -157,6 +178,11 @@ function addDeals() {
     if (userInput !== null) {
         // renderDeals(URL + '&title=' + userInput + '&pageNumber=' + scrolls)
         params = params + '&title=' + userInput
+    }
+
+    // Filter Options
+    if (filterOption !== null) {
+        params = params + filters[filterOption]
     }
 
     renderDeals(URL + params + '&pageNumber=' + scrolls)
@@ -185,30 +211,34 @@ searchInput.addEventListener('input', e => {
     renderDeals(URL + '&title=' + userInput)
 })
 
-// FIX THIS TO WORK
 // Drop Down Options Event Listener
-// const filterButtons = document.querySelectorAll('.filter-option')
-
-// filterButtons.forEach(filterButton => {
-//     // console.log(filterButton.innerHTML)
-
-//     filterButton.addEventListener('click', () => {
-//         // console.log(filterButton.innerHTML)
-//         console.log('click')
-//     })
-// })
-
-// Drop Down Options 
 document.addEventListener('click', e => {
+    const isDropdownButton = e.target.matches('[data-dropdown-button]')
 
-    // console.log(e.target)
+    if (!isDropdownButton && e.target.closest('[data-dropdown') != null) return //clicks that are not the button AND are within the dropdown are ignored
 
-    if (e.target.matches('.filter-option')) {
-        console.log('hi')
+    //get the closest data dropdown (parent) and set its class to active
+    let currentDropdown
+    if (isDropdownButton) {
+        currentDropdown = e.target.closest('[data-dropdown]')
+        currentDropdown.classList.toggle('active')
     }
 
+    // Closes all dropdowns when either another dropdown is opened or when the user clicks off
+    document.querySelectorAll("[data-dropdown].active").forEach(dropdown => {
+        if (dropdown === currentDropdown) return
+        dropdown.classList.remove('active')
+    })
 })
 
+// Filter Options Event Listener
+document.addEventListener('click', e => {
+    if (e.target.matches('.filter-option')) {
+        filterOption = e.target.textContent
+        removeDeals()
+        renderDeals(URL + filters[filterOption])
+    }
+})
 
 renderDeals(URL)
 
