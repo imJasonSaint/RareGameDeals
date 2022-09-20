@@ -200,14 +200,11 @@ window.addEventListener('scroll', () => {
 searchInput.addEventListener('input', e => {
     const deals = document.querySelectorAll('.deal')
 
-    console.log(deals)
-
     deals.forEach(deal => {
         deal.classList.add('hidden')
     })
 
     userInput = e.target.value.toLowerCase()
-    console.log(userInput)
     renderDeals(URL + '&title=' + userInput)
 })
 
