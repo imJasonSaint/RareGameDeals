@@ -130,13 +130,7 @@ function generateDeals(deals) {
         dealLink.append(gameStats)
 
         // Append Deal to Deal Container
-        if (filterOption === null || filterOption === 'Default') {
-            dealContainer.append(dealLink)
-        } else {
-            if (filterOption === ratingVar) {
-                dealContainer.append(dealLink)
-            }
-        }
+        dealContainer.append(dealLink)
     })
 
 }
