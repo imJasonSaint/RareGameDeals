@@ -159,7 +159,6 @@ let filters = {
 
 async function renderDeals(URL) {
     const deals = await fetchDeals(URL)
-
     generateDeals(deals)
 }
 
@@ -186,6 +185,7 @@ function addDeals() {
 // Infinte Scroll Listener
 window.addEventListener('scroll', () => {
     if (window.scrollY + window.innerHeight >= document.documentElement.scrollHeight && scrolls <= 50) {
+        console.log('bottom reached') //BUG FOUND - Not registering when bottom is reached on laptops
         addDeals()
     }
 })
@@ -232,4 +232,3 @@ document.addEventListener('click', e => {
 })
 
 renderDeals(URL)
-
