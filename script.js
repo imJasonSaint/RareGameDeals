@@ -144,7 +144,6 @@ function removeDeals() {
 function filterDeals(deals) {
 
     if (isFilterOn === false) {
-        console.log('test')
         return deals
     } else {
         return deals.filter(deal => {
@@ -219,13 +218,22 @@ window.addEventListener('scroll', () => {
 
 //Search Bar Event Listener
 searchInput.addEventListener('input', e => {
+
+    userInput = e.target.value.toLowerCase()
+
+    if (userInput == null) {
+        isFilterOn = false
+        removeDeals()
+        renderDeals(URL)
+        return
+    }
+
     const deals = document.querySelectorAll('.deal')
 
     deals.forEach(deal => {
         deal.classList.add('hidden')
     })
 
-    userInput = e.target.value.toLowerCase()
     renderDeals(URL + '&title=' + userInput)
 })
 
@@ -256,6 +264,13 @@ document.addEventListener('click', e => {
 
         if (filterOption === 'Common' || filterOption === 'Rare' || filterOption === 'Legendary') {
             isFilterOn = true
+        }
+
+        if (filterOption === 'Default') {
+            isFilterOn = false
+            removeDeals()
+            renderDeals(URL)
+            return
         }
 
         removeDeals()
