@@ -3,7 +3,7 @@ async function fetchDeals(URL) {
     try {
         const response = await fetch(URL)
         const deals = await response.json()
-        console.log('Total Pages: ', response.headers.get('X-Total-Page-Count'))
+        // console.log('Total Pages: ', response.headers.get('X-Total-Page-Count'))
         return deals
     } catch (error) {
         console.log('An Error has occured')
@@ -131,6 +131,7 @@ function generateDeals(deals) {
 
         // Append Deal to Deal Container
         dealContainer.append(dealLink)
+
     })
 
 }
@@ -140,6 +141,29 @@ function removeDeals() {
     dealContainer.replaceChildren()
 }
 
+function filterDeals(deals) {
+
+    if (isFilterOn === false) {
+        console.log('test')
+        return deals
+    } else {
+        return deals.filter(deal => {
+            let ratingVar
+
+            if (deal['metacriticScore'] >= 75 && (deal['savings'] >= 70 || deal['salePrice'] < 10)) {
+                ratingVar = 'Legendary'
+            } else if (deal['metacriticScore'] >= 50 && (deal['savings'] >= 90 || deal['salePrice'] < 5)) {
+                ratingVar = 'Rare'
+            } else {
+                ratingVar = 'Common'
+            }
+
+            return ratingVar === filterOption
+        })
+    }
+
+}
+
 const URL = 'https://www.cheapshark.com/api/1.0/deals?storeID=1'
 var scrolls = 1
 const searchInput = document.querySelector('[data-search]')
@@ -147,6 +171,8 @@ const searchInput = document.querySelector('[data-search]')
 // Filter/Sort Param variables
 let userInput = null
 let filterOption = null
+let isFilterOn = false
+let sortOption = null
 
 let filters = {
     'Default': '',
@@ -159,7 +185,8 @@ let filters = {
 
 async function renderDeals(URL) {
     const deals = await fetchDeals(URL)
-    generateDeals(deals)
+    const filteredDeals = filterDeals(deals)
+    generateDeals(filteredDeals)
 }
 
 
@@ -226,6 +253,11 @@ document.addEventListener('click', e => {
 document.addEventListener('click', e => {
     if (e.target.matches('.filter-option')) {
         filterOption = e.target.textContent
+
+        if (filterOption === 'Common' || filterOption === 'Rare' || filterOption === 'Legendary') {
+            isFilterOn = true
+        }
+
         removeDeals()
         renderDeals(URL + filters[filterOption])
     }
