@@ -24,11 +24,11 @@ body {
 .banner .container {
     width: 55%;
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
 
 .banner img {
-    width: 7rem;
+    width: 10rem;
 }
 
 .banner nav {
@@ -317,7 +317,7 @@ body {
 
     .features .options-btn {
         width: 10rem;
-        font-size: .8rem;
+        font-size: 1rem;
         padding: 1rem 0;
     }
 
