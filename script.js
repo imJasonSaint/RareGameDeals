@@ -264,6 +264,8 @@ document.addEventListener('click', e => {
 
         if (filterOption === 'Common' || filterOption === 'Rare' || filterOption === 'Legendary') {
             isFilterOn = true
+        } else {
+            isFilterOn = false
         }
 
         if (filterOption === 'Default') {

@@ -297,6 +297,7 @@ body {
     }
 
     .features .container {
+        flex-direction: column;
         width: 292px;
     }
 
@@ -315,9 +316,9 @@ body {
     }
 
     .features .options-btn {
-        width: 5rem;
+        width: 10rem;
         font-size: .8rem;
-        padding: .5rem 0;
+        padding: 1rem 0;
     }
 
     .features .options-btn .arrow {
