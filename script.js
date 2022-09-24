@@ -175,7 +175,7 @@ let sortOption = null
 
 let filters = {
     'Default': '',
-    'Legendary': '',
+    'Legendary': '&metacriticScore=75',
     'Rare': '',
     'Common': '',
     'Under $5': '&upperPrice=5',
@@ -184,8 +184,8 @@ let filters = {
 
 async function renderDeals(URL) {
     const deals = await fetchDeals(URL)
-    const filteredDeals = filterDeals(deals)
-    generateDeals(filteredDeals)
+    // const filteredDeals = filterDeals(deals)
+    generateDeals(deals)
 }
 
 
@@ -217,24 +217,30 @@ window.addEventListener('scroll', () => {
 })
 
 //Search Bar Event Listener
-searchInput.addEventListener('input', e => {
+searchInput.addEventListener('keypress', e => {
 
-    userInput = e.target.value.toLowerCase()
+    if (e.key === 'Enter') {
+        console.log('test')
+        userInput = e.target.value.toLowerCase()
 
-    if (userInput == null) {
-        isFilterOn = false
-        removeDeals()
-        renderDeals(URL)
+
+        if (userInput == null) {
+            isFilterOn = false
+            removeDeals()
+            renderDeals(URL)
+            return
+        }
+
+        const deals = document.querySelectorAll('.deal')
+
+        deals.forEach(deal => {
+            deal.classList.add('hidden')
+        })
+
+        renderDeals(URL + '&title=' + userInput)
+    } else {
         return
     }
-
-    const deals = document.querySelectorAll('.deal')
-
-    deals.forEach(deal => {
-        deal.classList.add('hidden')
-    })
-
-    renderDeals(URL + '&title=' + userInput)
 })
 
 // Drop Down Options Event Listener
