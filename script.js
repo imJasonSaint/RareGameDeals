@@ -184,8 +184,8 @@ let filters = {
 
 async function renderDeals(URL) {
     const deals = await fetchDeals(URL)
-    // const filteredDeals = filterDeals(deals)
-    generateDeals(deals)
+    const filteredDeals = filterDeals(deals)
+    generateDeals(filteredDeals)
 }
 
 
